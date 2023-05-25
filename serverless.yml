@@ -7,14 +7,12 @@ provider:
   runtime: nodejs18.x
   region: 'us-east-1'
   memorySize: 512
-  iam:
-    role:
-      statements:
-        Effect: Allow
-        Action:
-          - ses:SendEmail
-          - ses:SendRawEmail
-        Resource: arn:aws:ses:*
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+        - ses:SendRawEmail
+      Resource: arn:aws:ses:*
   apiGateway:
     restApiId: 411z282v69
     restApiRootResourceId: 4efcqfttn0
