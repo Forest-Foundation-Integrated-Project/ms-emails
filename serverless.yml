@@ -1,6 +1,5 @@
 service: ms-${self:custom.serviceName}
 frameworkVersion: '3'
-useDotenv: true
 
 provider:
   name: aws
