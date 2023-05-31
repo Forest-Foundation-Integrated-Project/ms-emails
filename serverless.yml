@@ -15,8 +15,6 @@ provider:
   apiGateway:
     restApiId: 411z282v69
     restApiRootResourceId: 4efcqfttn0
-    restApiResources:
-      v1: cmuvzg
 
 custom:
   esbuild:
