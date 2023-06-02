@@ -16,23 +16,15 @@ export class MailService implements IMailService {
 
     const params = {
       Source: 'alumnus.testes@gmail.com',
+      Template: mailEntity.emailType,
       Destination: {
         ToAddresses: [mailEntity.targetEmail]
       },
-      Message: {
-        Body: {
-          Text: {
-            Data: 'Tesde de Email'
-          }
-        },
-        Subject: {
-          Data: 'Email de Teste'
-        }
-      }
+      TemplateData: "{\"name\":\"Alexandre\"}"
     }
 
     try {
-      const result = await this.ses.sendEmail(params).promise()
+      const result = await this.ses.sendTemplatedEmail(params).promise()
       console.log(result)
 
       return true
