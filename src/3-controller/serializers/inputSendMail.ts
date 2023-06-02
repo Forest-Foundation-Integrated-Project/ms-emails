@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator'
+import { IsEmail, IsEnum, IsNotEmpty } from 'class-validator'
 
 import { Either } from '../../4-framework/shared/either'
 import { IError } from '../../4-framework/shared/iError'
@@ -6,11 +6,11 @@ import { Validatable } from './abstractValidatable'
 
 export class InputSendMail extends Validatable<InputSendMail> {
   @IsNotEmpty()
-  @IsString()
+  @IsEmail()
   targetEmail!: string
 
   @IsNotEmpty()
-  @IsString()
+  @IsEnum(EmailTemplates)
   emailType!: string
 }
 
