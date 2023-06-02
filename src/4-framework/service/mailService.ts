@@ -20,7 +20,7 @@ export class MailService implements IMailService {
       Destination: {
         ToAddresses: [mailEntity.targetEmail]
       },
-      TemplateData: "{\"name\":\"Alexandre\"}"
+      TemplateData: "{\"targetEmail\":\""+mailEntity.targetEmail+"\", \"token\": \"123456\"}"
     }
 
     try {
