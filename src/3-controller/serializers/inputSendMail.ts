@@ -1,4 +1,5 @@
 import { IsEmail, IsEnum, IsNotEmpty } from 'class-validator'
+import { EmailTemplates } from './enum/emailTemplates'
 
 import { Either } from '../../4-framework/shared/either'
 import { IError } from '../../4-framework/shared/iError'
