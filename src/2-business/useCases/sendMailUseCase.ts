@@ -14,8 +14,6 @@ export class SendMailUseCase implements IUseCase<InputSendMailDto, OutputSendMai
     try {
       const emailResult = await this.mailService.send(input)
 
-      console.log("Teste 3: ", emailResult)
-
       return right(emailResult)
     } catch (error) {
       return left(EmailSendingFailed)

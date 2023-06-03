@@ -9,8 +9,6 @@ import { SendMailOperator } from '../../3-controller/operators/sendMailOperator'
 import { container } from '../shared/ioc/container'
 
 export const handler = httpHandler(async (event: APIGatewayProxyEvent, context: Context) => {
-  console.log("Teste 1: ", event.body)
-
   context.callbackWaitsForEmptyEventLoop = false
   const operator = container.get(SendMailOperator)
   const body = JSON.parse(event?.body as string)
