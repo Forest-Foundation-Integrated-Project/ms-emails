@@ -1,23 +1,20 @@
 service: ms-${self:custom.serviceName}
 frameworkVersion: '3'
-useDotenv: true
 
 provider:
   name: aws
   runtime: nodejs18.x
   region: 'us-east-1'
   memorySize: 512
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+        - ses:SendRawEmail
+      Resource: arn:aws:ses:*
   apiGateway:
     restApiId: 411z282v69
     restApiRootResourceId: 4efcqfttn0
-    restApiResources:
-      v1: cmuvzg
-  environment:
-    DB_HOST: ${env:DB_HOST, ssm:/ifsp/infra/EC2-PS/host}
-    DB_PORT: ${env:DB_PORT, ssm:/ifsp/infra/EC2-PS/port}
-    DB_NAME: ${env:DB_NAME, ssm:/ifsp/infra/EC2-PS/dbname}
-    DB_USER: ${env:DB_USER, ssm:/ifsp/infra/EC2-PS/username}
-    DB_PASSWORD: ${env:DB_PASSWORD, ssm:/ifsp/infra/EC2-PS/password}
 
 custom:
   esbuild:
@@ -26,6 +23,17 @@ custom:
   serviceName: emails
   contextPath: ${self:custom.serviceName}
   baseApi: ${self:custom.contextPath}
+  funcDir: src/4-framework/functions
+functions:
+  sendMail:
+    handler: ${self:custom.funcDir}/sendMail.handler
+    events:
+      - http:
+          path: ${self:custom.baseApi}/
+          method: post
+          cors:
+            origin: '*'
+            headers: '*'
 
 plugins:
   - serverless-esbuild
