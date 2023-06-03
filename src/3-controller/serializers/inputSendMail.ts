@@ -1,4 +1,4 @@
-import { IsEmail, IsEnum, IsNotEmpty } from 'class-validator'
+import { IsAlphanumeric, IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from 'class-validator'
 import { EmailTemplates } from './enum/emailTemplates'
 
 import { Either } from '../../4-framework/shared/either'
@@ -13,6 +13,13 @@ export class InputSendMail extends Validatable<InputSendMail> {
   @IsNotEmpty()
   @IsEnum(EmailTemplates)
   emailType!: string
+
+  @IsOptional()
+  @IsString()
+  @MinLength(6)
+  @MaxLength(6)
+  @IsAlphanumeric()
+  token?: string
 }
 
 export type OutputSendMail = Either<IError, boolean>
