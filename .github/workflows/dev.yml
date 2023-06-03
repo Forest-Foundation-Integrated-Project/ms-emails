@@ -2,7 +2,7 @@ name: DEV
 
 on:
   push:
-    branches: [ email_test ]
+    branches: [ main ]
 
   workflow_dispatch:
 
