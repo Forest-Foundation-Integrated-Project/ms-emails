@@ -12,6 +12,8 @@ export class SendMailOperator extends AbstractOperator<InputSendMail, OutputSend
   }
 
   protected async run(input: InputSendMail): Promise<OutputSendMail> {
+    console.log('Teste 2: ', input)
+
     const result = await this.sendMailUseCase.exec(input)
 
     if (result.isLeft()) {

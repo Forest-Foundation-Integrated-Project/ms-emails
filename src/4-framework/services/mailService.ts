@@ -12,6 +12,7 @@ export class MailService implements IMailService {
   }
 
   async send(mailEntity: IMailEntity): Promise<boolean> {
+    console.log('Teste 4: ', mailEntity)
 
     const params = {
       Source: 'alumnus.testes@gmail.com',
