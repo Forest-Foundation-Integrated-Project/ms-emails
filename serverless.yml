@@ -11,6 +11,8 @@ provider:
       Action:
         - ses:SendEmail
         - ses:SendRawEmail
+        - ses:SendTemplatedEmail
+        - ses:SendBulkTemplatedEmail
       Resource: arn:aws:ses:*
   apiGateway:
     restApiId: 411z282v69
