@@ -1,8 +1,13 @@
 import { AbstractEntity } from './abstractEntity'
 
+export enum EmailTypes {
+  confirmEmail = "confirmEmail",
+  resetPassword = "resetPassword"
+}
+
 export interface IMailEntity {
   targetEmail: string
-  emailType: string
+  emailType: EmailTypes
   token?: string
 }
 
