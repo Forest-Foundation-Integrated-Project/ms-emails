@@ -15,7 +15,7 @@ export class MailService implements IMailService {
     console.log('Teste 4: ', mailEntity)
 
     const params = {
-      Source: 'alumnus.testes@gmail.com',
+      Source: 'app.alumnus@gmail.com',
       Template: mailEntity.emailType,
       Destination: {
         ToAddresses: [mailEntity.targetEmail]
